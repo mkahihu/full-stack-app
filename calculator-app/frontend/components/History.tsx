@@ -20,9 +20,15 @@ import {
   useHistory,
   useClearHistory,
 } from "@/api/endpoints/calculator/apiQueries";
+import { CALCULATOR_CONSTANTS } from "@/constants/calculator";
 
 export default function History() {
-  const { data: historyData, isLoading, refetch } = useHistory();
+  const {
+    data: historyData,
+    isLoading,
+    refetch,
+  } = useHistory(CALCULATOR_CONSTANTS.HISTORY_PAGE_SIZE, 0);
+
   const clearHistoryMutation = useClearHistory();
 
   const calculations = historyData?.calculations || [];
